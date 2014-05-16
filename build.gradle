@@ -1,0 +1,99 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'war'
+apply plugin: 'jetty'
+
+sourceCompatibility = 1.6
+version = '1.0'
+jar {
+	manifest {
+		attributes 'Implementation-Title': 'Gradle Quickstart', 'Implementation-Version': version
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+sourceSets {
+	main {
+		java {
+			srcDir 'src/main/java'
+		}
+		resources {
+			srcDir 'src/main/resources'
+		}
+	}
+	
+	test {
+		java {
+			srcDir 'src/test/java'
+		}
+		resources {
+			srcDir 'src/test/resources'
+		}
+	}
+	
+	systemtest {
+		java {
+			srcDir 'src/systemtest/java'
+		}
+		resources {
+			srcDir 'src/systemtest/resources'
+		}
+	}
+}
+
+dependencies {
+	//Spring
+	compile group: 'org.springframework', name: 'spring-core', version: '3.1.3.RELEASE'
+	compile group: 'org.springframework', name: 'spring-context', version: '3.1.3.RELEASE'
+	compile group: 'org.springframework', name: 'spring-jdbc', version: '3.1.3.RELEASE'
+	compile group: 'org.springframework', name: 'spring-orm', version: '3.1.3.RELEASE'
+	compile group: 'org.springframework', name: 'spring-web', version: '3.1.3.RELEASE'
+	compile group: 'org.springframework', name: 'spring-webmvc', version: '3.2.8.RELEASE'
+	testCompile 'org.springframework:spring-test:3.1.3.RELEASE'
+	
+	
+	// Log
+	compile 'commons-logging:commons-logging:1.1'
+	compile 'log4j:log4j:1.2.17'
+	compile 'org.slf4j:slf4j-api:1.7.6'
+	compile 'org.slf4j:slf4j-log4j12:1.7.6'
+
+	
+	// JSTL
+	compile 'javax.servlet:jstl:1.2'
+	compile 'javax.servlet:servlet-api:2.5'
+	compile 'javax.servlet:jsp-api:2.0'
+	
+	
+	// Hibernate
+	compile 'org.hibernate:hibernate-core:4.1.6.Final'
+	compile 'org.hibernate:hibernate-entitymanager:4.1.6.Final'
+	compile 'org.hibernate:hibernate-c3p0:4.0.1.Final'
+	
+	
+	// Sitemesh
+	compile 'commons-dbcp:commons-dbcp:1.4'
+	compile 'junit:junit:4.10'
+	compile 'opensymphony:sitemesh:2.4.2'
+	
+	
+	// SQL Drivers
+	compile 'mysql:mysql-connector-java:5.1.28'
+	compile 'com.h2database:h2:1.3.161'
+	
+	
+	// Selenium
+	testCompile 'org.seleniumhq.selenium:selenium-java:2.41.0'
+	testCompile 'org.seleniumhq.selenium:selenium-server:2.41.0'
+	testCompile 'org.seleniumhq.selenium:selenium-firefox-driver:2.41.0'
+	
+	
+	// Utils
+	compile 'javax.servlet:javax.servlet-api:3.1.0'
+	compile 'cglib:cglib:2.2.2'
+	compile 'com.google.code.gson:gson:2.2.4'
+	testCompile 'org.mockito:mockito-all:1.8.4'
+}
